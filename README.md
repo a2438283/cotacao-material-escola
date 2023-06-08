@@ -1,3 +1,8 @@
+# Cotação Material Esolar
+Esta aplicação tem como objetivo auxiliar na redução de gastos com o material escolar.
+# Protótipo
+https://www.figma.com/file/EYdgTCnmVetcB9glrI1Qth/Cota%C3%A7%C3%A3o-Material-Escolar?type=design&node-id=2-479
+
 # cotacao-material-escola-app
 
 ## Checklist
