@@ -1,15 +1,1 @@
-<header>
-  <app-cabecalho></app-cabecalho>
-</header>
-
-<main class="pagina">
-  <router-outlet></router-outlet>
-</main>
-
-<app-rodape>
-  <span style="font-weight: bold">{{
-    this?.currentDate | date : "HH:mm:ss"
-  }}</span>
-  - Latitude: {{ this.coords?.latitude }} e Longitude:
-  {{ this.coords?.longitude }}
-</app-rodape>
+<router-outlet></router-outlet>

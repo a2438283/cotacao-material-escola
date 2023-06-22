@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Desecrição</th>
+    <th>Quantidade</th>
+    <th>Valor</th>
+    <th>Ação</th>
+  </tr>
+
+  <tr *ngFor="let item of lista">
+    <td>{{ item.descricao }}</td>
+    <td>{{ item.quantidade }}</td>
+    <td>{{ item.valor }}</td>
+    <td><a href="\item">edit</a> &nbsp; <a href="\lista">delete</a></td>
+  </tr>
+</table>
+<a href="\item">novo</a>
