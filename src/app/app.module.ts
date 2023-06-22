@@ -5,8 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+import { MenorPrecoComponent } from './menor-preco/menor-preco.component';
+import { MensagemModalComponent } from './mensagem-modal/mensagem-modal.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { RodapeComponent } from './rodape/rodape.component';
+
+import { RelatorioLojasComponent } from './relatorio-lojas/relatorio-lojas.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +18,9 @@ import { RodapeComponent } from './rodape/rodape.component';
     CabecalhoComponent,
     RodapeComponent,
     ProdutoComponent,
+    MensagemModalComponent,
+    MenorPrecoComponent,
+    RelatorioLojasComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
