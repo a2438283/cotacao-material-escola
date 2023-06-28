@@ -1,4 +1,13 @@
+<app-mensagem-modal
+  [show]="modal.show"
+  [content]="modal"
+  (closeEvent)="onCloseModal()"
+>
+</app-mensagem-modal>
 <div class="container contact">
+  <br />
+  <br />
+  <br />
   <h5>Cadastro de produtos</h5>
   <hr />
 
@@ -38,9 +47,7 @@
         </button>
       </form>
     </div>
-
     <p>descricao: {{ this.descricao }}</p>
-
     <!-- link home -->
     <div class="row">
       <div class="col s12 m6 offset-m3 center">
