@@ -1,0 +1,52 @@
+{
+  "produtos":[
+    {
+      "id": "1",
+      "descricao": "Caderno de linha",
+      "quantidade": 5,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "2",
+      "descricao": "Caderno de desenho",
+      "quantidade": 1,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "3",
+      "descricao": "Caderno quadriculado",
+      "quantidade": 1,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "4",
+      "descricao": "régua",
+      "quantidade": 1,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "5",
+      "descricao": "lapis n2",
+      "quantidade": 2,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "6",
+      "descricao": "borracha",
+      "quantidade": 1,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "7",
+      "descricao": "caixa de lapis de cor",
+      "quantidade": 1,
+      "date": "2023-06-26T00:12:50.798Z"
+    },
+    {
+      "id": "8",
+      "descricao": "pasta L",
+      "quantidade": 1,
+      "date": "2023-06-26T00:12:50.798Z"
+    }
+  ]
+}
