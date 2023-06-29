@@ -91,7 +91,6 @@
       <tr>
         <th>Descricao</th>
         <th>Quantidade</th>
-        <th>Data Criação</th>
         <th></th>
       </tr>
     </thead>
@@ -100,7 +99,6 @@
       <tr *ngFor="let p of produtos">
         <td>{{ p.descricao | titlecase }}</td>
         <td>{{ p.quantidade | number : "1.2-2" }}</td>
-        <td>{{ p.data | date : "short" : "pt-BR" }}</td>
         <td class="right">
           <a
             ><i class="material-icons my-icon-size" (click)="onEdit(p)"

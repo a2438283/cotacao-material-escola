@@ -11,11 +11,6 @@ export class ProdutoStorageService {
   private produtoSource!: BehaviorSubject<number>;
   constructor() {
     this.produtos = WebStorageUtil.getArray(Constants.PRODUTOS_KEY);
-
-    console.log('------------------------------------------------------');
-    console.log(this.produtos);
-    console.log('------------------------------------------------------');
-
     this.produtoSource = new BehaviorSubject<number>(this.produtos.length);
   }
 
@@ -57,7 +52,6 @@ export class ProdutoStorageService {
   }
 
   asObservable(): Observable<number> {
-    console.log('aki kiakaiaki');
     return this.produtoSource;
   }
 }

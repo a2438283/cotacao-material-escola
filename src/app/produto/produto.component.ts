@@ -1,12 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  OnChanges,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Produto } from '../model/produto';
+import { ProdutoService } from '../services/produto.service';
 import { ProdutoStorageService } from './produto-storage.service';
 
 @Component({
@@ -15,13 +10,10 @@ import { ProdutoStorageService } from './produto-storage.service';
   styleUrls: ['./produto.component.css'],
   providers: [ProdutoStorageService],
 })
-export class ProdutoComponent implements OnInit, AfterViewInit, OnChanges {
+export class ProdutoComponent implements OnInit, AfterViewInit {
   @ViewChild('form') form!: NgForm;
   produto!: Produto;
   produtos?: Produto[];
-
-  isSubmitted!: boolean;
-  isSuccess!: boolean;
 
   modal = {
     icon: 'check',
@@ -30,45 +22,36 @@ export class ProdutoComponent implements OnInit, AfterViewInit, OnChanges {
     text: '',
   };
 
-  constructor(private produtoService: ProdutoStorageService) {}
+  constructor(private produtoService: ProdutoService) {}
 
   ngOnInit(): void {
-    this.produtos = this.produtoService.getProdutos();
-    this.produto = new Produto('', 0, this.produtos.length);
-  }
-
-  ngOnChanges(): void {
-    console.log('ngOnChanges');
+    this.getProdutos();
   }
 
   ngAfterViewInit(): void {}
 
   onSubmit() {
-    this.isSubmitted = true;
-    if (!this.produtoService.isExist(this.produto.descricao)) {
-      this.produtoService.save(this.produto);
-    } else {
-      this.produtoService.update(this.produto);
-    }
-    this.isSuccess = true;
-
-    this.modal.show = true;
-    this.modal.icon = 'check';
-    this.modal.title = 'Sucesso!';
-    this.modal.text = `Cadastro Realisado com Sucesso`;
-
-    this.form.reset();
-    this.produtos = this.produtoService.getProdutos();
-    this.produto = new Produto('', 0, this.produtos.length);
+    this.produtoService.getAll().then((dados) => {
+      let exist = false;
+      dados.forEach((p) => {
+        if (p.id === this.produto.id) {
+          exist = true;
+        }
+      });
+      if (exist) {
+        this.update(this.produto);
+      } else {
+        this.save(this.produto);
+      }
+    });
   }
 
   onResetClick() {
     this.form.reset();
-    this.produto = new Produto('', 0, this.produtos!.length);
+    this.produto = new Produto('');
   }
 
   onEdit(produto: Produto) {
-    //this.user = user;
     let clone = Produto.clone(produto);
     this.produto = clone;
   }
@@ -80,20 +63,75 @@ export class ProdutoComponent implements OnInit, AfterViewInit, OnChanges {
     if (!confirmation) {
       return;
     }
-    let response: boolean = this.produtoService.delete(produto.id);
-    this.isSuccess = response;
-    if (response) {
-      this.modal.show = true;
-      this.modal.icon = 'check';
-      this.modal.title = 'Sucesso!';
-      this.modal.text = `Item removido com Sucesso`;
-    } else {
-      this.modal.show = true;
-      this.modal.icon = 'error';
-      this.modal.title = 'Erro!';
-      this.modal.text = `Erro ao excluir registro`;
-    }
-    this.produtos = this.produtoService.getProdutos();
+    this.produtoService
+      .delete(produto)
+      .then(() => {
+        this.modal.show = true;
+        this.modal.icon = 'check';
+        this.modal.title = 'Sucesso!';
+        this.modal.text = `Item removido com Sucesso`;
+      })
+      .catch(() => {
+        this.modal.show = true;
+        this.modal.icon = 'error';
+        this.modal.title = 'Erro!';
+        this.modal.text = `Erro ao excluir registro`;
+      });
+
+    this.getProdutos();
+  }
+
+  update(p: Produto) {
+    this.produtoService
+      .update(this.produto)
+      .then(() => {
+        this.modal.show = true;
+        this.modal.icon = 'check';
+        this.modal.title = 'Sucesso!';
+        this.modal.text = `Cadastro Realisado com Sucesso`;
+
+        this.getProdutos();
+      })
+      .catch((e) => {
+        this.modal.show = true;
+        this.modal.icon = 'error';
+        this.modal.title = 'Erro!';
+        this.modal.text = `Erro ao atualizar registro`;
+      });
+  }
+
+  save(p: Produto) {
+    this.produtoService
+      .save(this.produto)
+      .then(() => {
+        this.modal.show = true;
+        this.modal.icon = 'check';
+        this.modal.title = 'Sucesso!';
+        this.modal.text = `Cadastro Realisado com Sucesso`;
+
+        this.getProdutos();
+      })
+      .catch(() => {
+        this.modal.show = true;
+        this.modal.icon = 'error';
+        this.modal.title = 'Erro!';
+        this.modal.text = `Erro ao salvar registro`;
+      });
+  }
+
+  getProdutos() {
+    this.produtoService
+      .getAll()
+      .then((data) => {
+        this.produtos = data;
+      })
+      .catch((e) => {
+        this.modal.show = true;
+        this.modal.icon = 'error';
+        this.modal.title = 'Erro!';
+        this.modal.text = e.data;
+      });
+    this.produto = new Produto('');
   }
 
   onCloseModal() {

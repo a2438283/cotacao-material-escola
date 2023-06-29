@@ -9,7 +9,6 @@ export class WebStorageUtil {
 
   static getArray(key: string): any[] {
     if (localStorage.getItem(key) == undefined) {
-      console.log('entrou no if');
       localStorage.setItem(key, JSON.stringify([]));
     }
     return JSON.parse(localStorage.getItem(key)!);
