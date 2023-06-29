@@ -1,32 +1,18 @@
 export class Produto {
   id: number;
-  data: Date;
-  constructor(
-    public descricao: string,
-    public quantidade: number,
-    public qtdRegistro: number
-  ) {
-    this.id = qtdRegistro++;
+  quantidade: number;
+
+  constructor(public descricao: string) {
+    this.id = this.id = Math.round(Math.random() * 1000);
     this.descricao = descricao;
-    this.quantidade = quantidade;
-    this.data = new Date();
+    this.quantidade = 0;
   }
 
   public static clone(produto: Produto) {
-    let p: Produto = new Produto(
-      produto.descricao,
-      produto.quantidade,
-      produto.id
-    );
-    p.data = produto.data;
-    return p;
-  }
-  public static toWS(produto: Produto) {
-    let p: Produto = new Produto(
-      produto.descricao,
-      produto.quantidade,
-      produto.id
-    );
+    let p: Produto = new Produto(produto.descricao);
+    p.id = produto.id;
+    p.quantidade = produto.quantidade;
+
     return p;
   }
 }
