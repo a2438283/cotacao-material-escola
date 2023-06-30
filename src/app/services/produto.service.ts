@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Produto } from '../model/produto';
 import { RoutesAPI } from './../util/routes-api';
 
@@ -15,52 +15,42 @@ export class ProdutoService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  getById(id: number): Promise<Produto> {
-    return lastValueFrom(
-      this.httpClient.get<Produto>('${RoutesAPI.PRODUTOS}/${id}')
+  getById(id: number): Observable<Produto> {
+    return this.httpClient.get<Produto>('${RoutesAPI.PRODUTOS}/${id}');
+  }
+
+  getAll(): Observable<Produto[]> {
+    return this.httpClient.get<Produto[]>(RoutesAPI.PRODUTOS);
+  }
+
+  save(produto: Produto): Observable<Produto> {
+    return this.httpClient.post<Produto>(
+      `${RoutesAPI.PRODUTOS}`,
+      produto,
+      this.httpOptions
     );
   }
 
-  async getAll(): Promise<Produto[]> {
-    return lastValueFrom(this.httpClient.get<Produto[]>(RoutesAPI.PRODUTOS));
-  }
-
-  async save(produto: Produto): Promise<Produto> {
-    return lastValueFrom(
-      this.httpClient.post<Produto>(
-        `${RoutesAPI.PRODUTOS}`,
-        produto,
-        this.httpOptions
-      )
+  patch(produto: Produto): Observable<Produto> {
+    return this.httpClient.patch<Produto>(
+      `${RoutesAPI.PRODUTOS}/${produto.id}`,
+      JSON.stringify(produto),
+      this.httpOptions
     );
   }
 
-  async patch(produto: Produto): Promise<Produto> {
-    return lastValueFrom(
-      this.httpClient.patch<Produto>(
-        `${RoutesAPI.PRODUTOS}/${produto.id}`,
-        JSON.stringify(produto),
-        this.httpOptions
-      )
+  update(produto: Produto): Observable<Produto> {
+    return this.httpClient.put<Produto>(
+      `${RoutesAPI.PRODUTOS}/${produto.id}`,
+      JSON.stringify(produto),
+      this.httpOptions
     );
   }
 
-  async update(produto: Produto): Promise<Produto> {
-    return lastValueFrom(
-      this.httpClient.put<Produto>(
-        `${RoutesAPI.PRODUTOS}/${produto.id}`,
-        JSON.stringify(produto),
-        this.httpOptions
-      )
-    );
-  }
-
-  async delete(produto: Produto): Promise<any> {
-    return lastValueFrom(
-      this.httpClient.delete(
-        `${RoutesAPI.PRODUTOS}/${produto.id}`,
-        this.httpOptions
-      )
+  delete(produto: Produto): Observable<any> {
+    return this.httpClient.delete(
+      `${RoutesAPI.PRODUTOS}/${produto.id}`,
+      this.httpOptions
     );
   }
 }
