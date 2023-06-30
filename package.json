@@ -1,13 +1,15 @@
 {
-  "name": "cotacoa-material-escolar-app",
+  "name": "cotacao-material-escolar-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production --base-href=/cotacao-material-escolar-app/",
+    "ghpages": "angular-cli-ghpages --dir=dist/cotacao-material-escolar-app",
+    "deploy": "npm run build & npm run ghpages",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "json:server":"json-server --watch db.json"
+    "json:server": "json-server --watch db.json"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "@types/materialize-css": "^1.0.11",
+    "angular-cli-ghpages": "^1.0.6",
     "json-server": "^0.17.3",
     "material-icons": "^1.13.8",
     "materialize-css": "^1.0.0",

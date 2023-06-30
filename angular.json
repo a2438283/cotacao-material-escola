@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cotacoa-material-escolar-app": {
+    "cotacao-material-escolar-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cotacoa-material-escolar-app",
+            "outputPath": "dist/cotacao-material-escolar-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -43,7 +43,12 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "sourceMap":{
+                "hidden": true,
+                "scripts": true,
+                "styles": true
+              }
             },
             "development": {
               "buildOptimizer": false,
@@ -60,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cotacoa-material-escolar-app:build:production"
+              "browserTarget": "cotacao-material-escolar-app:build:production"
             },
             "development": {
-              "browserTarget": "cotacoa-material-escolar-app:build:development"
+              "browserTarget": "cotacao-material-escolar-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cotacoa-material-escolar-app:build"
+            "browserTarget": "cotacao-material-escolar-app:build"
           }
         },
         "test": {
