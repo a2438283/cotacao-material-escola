@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --base-href=/cotacao-material-escolar-app/",
-    "ghpages": "angular-cli-ghpages --dir=dist/cotacao-material-escolar-app",
+    "build": "ng build --configuration production --base-href=https://a2438283.github.io/cotacao-material-escola-app/",
+    "ghpages": "angular-cli-ghpages --dir=./dist/cotacao-material-escolar-app",
     "deploy": "npm run build & npm run ghpages",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
