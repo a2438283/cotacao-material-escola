@@ -31,7 +31,7 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {}
 
   onSubmit() {
-    this.produtoService.getAll().then((dados) => {
+    this.produtoService.getAll().subscribe((dados) => {
       let exist = false;
       dados.forEach((p) => {
         if (p.id === this.produto.id) {
@@ -63,75 +63,52 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
     if (!confirmation) {
       return;
     }
-    this.produtoService
-      .delete(produto)
-      .then(() => {
-        this.modal.show = true;
-        this.modal.icon = 'check';
-        this.modal.title = 'Sucesso!';
-        this.modal.text = `Item removido com Sucesso`;
-      })
-      .catch(() => {
-        this.modal.show = true;
-        this.modal.icon = 'error';
-        this.modal.title = 'Erro!';
-        this.modal.text = `Erro ao excluir registro`;
-      });
+    this.produtoService.delete(produto).subscribe({
+      next: () => this.showSucesso(`Item removido com Sucesso`),
+      error: (e) => console.error(`Erro ao excluir registro` + e),
+      complete: () => console.info('complete'),
+    });
+  }
+
+  update(p: Produto) {
+    this.produtoService.update(this.produto).subscribe({
+      next: () => this.showSucesso('Cadastro Atualizado com Sucesso'),
+      error: (e) => console.error(`Erro ao atualizar registro` + e),
+      complete: () => console.info('complete'),
+    });
+  }
+
+  save(p: Produto): void {
+    this.produtoService.save(this.produto).subscribe({
+      next: () => this.showSucesso('Cadastro Realisado com Sucesso'),
+      error: (e) => console.error(`Erro ao salvar registro` + e),
+      complete: () => console.info('complete'),
+    });
+  }
+
+  getProdutos() {
+    this.produtoService.getAll().subscribe({
+      next: (data) => (this.produtos = data),
+      error: (e) => this.showErro(e),
+      complete: () => console.log('complete'),
+    });
+    this.produto = new Produto('');
+  }
+
+  showSucesso(msg: string) {
+    this.modal.show = true;
+    this.modal.icon = 'check';
+    this.modal.title = 'Sucesso!';
+    this.modal.text = msg;
 
     this.getProdutos();
   }
 
-  update(p: Produto) {
-    this.produtoService
-      .update(this.produto)
-      .then(() => {
-        this.modal.show = true;
-        this.modal.icon = 'check';
-        this.modal.title = 'Sucesso!';
-        this.modal.text = `Cadastro Realisado com Sucesso`;
-
-        this.getProdutos();
-      })
-      .catch((e) => {
-        this.modal.show = true;
-        this.modal.icon = 'error';
-        this.modal.title = 'Erro!';
-        this.modal.text = `Erro ao atualizar registro`;
-      });
-  }
-
-  save(p: Produto) {
-    this.produtoService
-      .save(this.produto)
-      .then(() => {
-        this.modal.show = true;
-        this.modal.icon = 'check';
-        this.modal.title = 'Sucesso!';
-        this.modal.text = `Cadastro Realisado com Sucesso`;
-
-        this.getProdutos();
-      })
-      .catch(() => {
-        this.modal.show = true;
-        this.modal.icon = 'error';
-        this.modal.title = 'Erro!';
-        this.modal.text = `Erro ao salvar registro`;
-      });
-  }
-
-  getProdutos() {
-    this.produtoService
-      .getAll()
-      .then((data) => {
-        this.produtos = data;
-      })
-      .catch((e) => {
-        this.modal.show = true;
-        this.modal.icon = 'error';
-        this.modal.title = 'Erro!';
-        this.modal.text = e.data;
-      });
-    this.produto = new Produto('');
+  showErro(msg: string) {
+    this.modal.show = true;
+    this.modal.icon = 'error';
+    this.modal.title = 'Erro!';
+    this.modal.text = msg;
   }
 
   onCloseModal() {
