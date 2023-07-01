@@ -12,6 +12,7 @@ import { ProdutoComponent } from './produto/produto.component';
 import { RodapeComponent } from './rodape/rodape.component';
 
 import { RelatorioLojasComponent } from './relatorio-lojas/relatorio-lojas.component';
+import { CotacaoComponent } from './cotacao/cotacao.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RelatorioLojasComponent } from './relatorio-lojas/relatorio-lojas.compo
     MensagemModalComponent,
     MenorPrecoComponent,
     RelatorioLojasComponent,
+    CotacaoComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

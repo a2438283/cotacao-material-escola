@@ -8,7 +8,7 @@
   <br />
   <br />
   <br />
-  <h5>Cadastro de produtos</h5>
+  <h5>Cadastro de Cotações</h5>
   <hr />
 
   <div class="container contact">
@@ -21,7 +21,7 @@
               name="input-descricao"
               type="text"
               class="validade"
-              [(ngModel)]="this.produto.descricao"
+              [(ngModel)]="this.cotacao.descricao"
               pattern="^[a-zA-ZÀ-ÿ\s]+$"
               #descricao="ngModel"
               required
@@ -39,27 +39,38 @@
               data-success="Ok!"
             ></span>
           </div>
-
-          <div class="input-field col s12 l6">
-            <input
-              id="input-quantidade"
-              name="input-quantidade"
-              type="text"
-              class="validate"
-              [(ngModel)]="this.produto.quantidade"
-              pattern="^\d*\.?\d+$"
-              #quantidade="ngModel"
-              required
-            />
-            <label for="input-quantidade">Quantidade *</label>
-            <div
-              class="red-text"
-              [hidden]="quantidade.valid || quantidade.untouched"
-            >
-              Por favor, a quantidade.
-            </div>
-          </div>
         </div>
+
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="text-right">Quantidade</th>
+              <th class="text-right">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of produtos"
+              [ngClass]="{
+                invalid: item.preco <= 0
+              }"
+            >
+              <td>{{ item.descricao | titlecase }}</td>
+              <td class="text-right">
+                {{ item.quantidade | number : "1.2-2" }}
+              </td>
+              <td class="text-right">
+                <input
+                  id="input-preco"
+                  name="input-preco"
+                  type="number"
+                  [(ngModel)]="item.preco"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <button
           class="btn waves-effect waves-light amber darken-4"
@@ -81,39 +92,9 @@
         </button>
       </form>
 
-      <p>descricao: {{ this.produto.descricao }}</p>
+      <p>descricao: {{ this.cotacao.descricao }}</p>
     </div>
   </div>
-  <h5>Produtos cadastrados</h5>
-
-  <table class="highlight" *ngIf="produtos && produtos!.length > 0">
-    <thead>
-      <tr>
-        <th>Descricao</th>
-        <th>Quantidade</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let p of produtos">
-        <td>{{ p.descricao | titlecase }}</td>
-        <td>{{ p.quantidade | number : "1.2-2" }}</td>
-        <td class="right">
-          <a
-            ><i class="material-icons my-icon-size" (click)="onEdit(p)"
-              >edit</i
-            ></a
-          >
-          <a
-            ><i class="material-icons my-icon-size" (click)="onDelete(p)"
-              >delete</i
-            ></a
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
   <div class="row">
     <div class="col s12 m6 offset-m3 center">
