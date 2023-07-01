@@ -3,6 +3,11 @@ Esta aplicação tem como objetivo auxiliar na redução de gastos com o materia
 # Protótipo
 https://www.figma.com/file/EYdgTCnmVetcB9glrI1Qth/Cota%C3%A7%C3%A3o-Material-Escolar?type=design&node-id=2-479
 
+# Prerequisito
+json-server instalado localmente e rodando
+
+https://a2438283.github.io/cotacao-material-escola-app/cotacao
+
 # cotacao-material-escola-app
 
 ## Checklist
