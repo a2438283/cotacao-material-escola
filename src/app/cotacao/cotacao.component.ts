@@ -91,7 +91,7 @@ export class CotacaoComponent implements OnInit, AfterViewInit {
     this.cotacaoService.getAll().subscribe({
       next: (data) => (this.cotacoes = data),
       error: (e) => this.showErro(e),
-      complete: () => console.log('complete'),
+      complete: () => console.log('complete get all cotações'),
     });
     this.cotacao = new Cotacao('');
   }
@@ -102,20 +102,6 @@ export class CotacaoComponent implements OnInit, AfterViewInit {
       error: (e) => this.showErro(e),
       complete: () => console.log('complete'),
     });
-  }
-
-  confirmarEdicao(item: any) {
-    if (item.preco > 0) {
-      item.editado = false;
-      // Lógica para salvar o preço atualizado
-      console.log('Preço atualizado:', item.preco);
-    }
-  }
-
-  cancelarEdicao(item: any) {
-    item.editado = false;
-    // Restaurar o valor original do preço
-    console.log('Edição cancelada:', item.preco);
   }
 
   showSucesso(msg: string) {
