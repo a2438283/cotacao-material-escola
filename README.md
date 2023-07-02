@@ -33,7 +33,7 @@ https://a2438283.github.io/cotacao-material-escola-app/cotacao
 
 
 
-## Para inplementação futura
+## Para implementação futura
 - Cadastro de Lojas
 - Listar menor preço
 - Listar Lija maior economia
