@@ -4,7 +4,7 @@ Esta aplicação tem como objetivo auxiliar na redução de gastos com o materia
 https://www.figma.com/file/EYdgTCnmVetcB9glrI1Qth/Cota%C3%A7%C3%A3o-Material-Escolar?type=design&node-id=2-479
 
 # Pré-requisito
-json-server instalado localmente e rodando
+json-server instalado localmente e rodando  (executar o comando npm rum json:server)
 
 https://a2438283.github.io/cotacao-material-escola-app/cotacao
 
