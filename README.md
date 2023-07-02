@@ -30,3 +30,10 @@ https://a2438283.github.io/cotacao-material-escola-app/cotacao
 - [x] Usar a diretiva ngIf
 - [x] Formatar a apresentação de dados com Pipes.
 - [x] Build e deploy da aplicação.
+
+
+
+## Para inplementação futura
+- Cadastro de Lojas
+- Listar menor preço
+- Listar Lija maior economia
