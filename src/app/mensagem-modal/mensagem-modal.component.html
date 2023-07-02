@@ -1,0 +1,17 @@
+<div class="modal" #modal1>
+  <div class="modal-content">
+    <h4>
+      <i class="medium material-icons">{{ content?.icon }}</i>
+      {{ content?.title }}
+    </h4>
+    <p>{{ content?.text }}</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="modal-close waves-effect waves-green btn-flat"
+      (click)="onClose()"
+    >
+      Ok
+    </button>
+  </div>
+</div>

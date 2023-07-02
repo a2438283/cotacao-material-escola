@@ -1,0 +1,30 @@
+<div class="container contact">
+  <h5>Transação</h5>
+  <h6>Dados da transação</h6>
+  <hr />
+  <div class="row">
+    <ul class="collection col s12 offset-m3 m6">
+      <li class="collection-item">
+        <span class="badge left">Loja</span>{{ this.item.loja }}
+      </li>
+      <li class="collection-item">
+        <span class="badge left">Descrição</span>{{ this.item.descricao }}
+      </li>
+      <li class="collection-item">
+        <span class="badge left">Quantidade</span
+        >{{ this.item.quantidade | currency : "BRL" }}
+      </li>
+      <li class="collection-item">
+        <span class="badge left">Valor</span>{{ this.item.valor }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- link home -->
+  <div class="row">
+    <div class="col s12 m6 offset-m3 center">
+      <a href="/index.html"> VOLTAR AO MENU PRINCIPAL </a>
+    </div>
+  </div>
+  <!-- link home -->
+</div>

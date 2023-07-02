@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+}
+
+.invalid input {
+  border-color: red;
+}
+

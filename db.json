@@ -1,0 +1,83 @@
+{
+  "produtos": [
+    {
+      "descricao": "Caderno de linhas",
+      "id": 1,
+      "quantidade": "51",
+      "preco": 0
+    },
+    {
+      "id": 2,
+      "descricao": "Caderno de desenho",
+      "quantidade": 1
+    },
+    {
+      "id": 3,
+      "descricao": "Caderno quadriculado",
+      "quantidade": 1
+    },
+    {
+      "id": 4,
+      "descricao": "régua",
+      "quantidade": 1
+    },
+    {
+      "descricao": "lapis numero doissss",
+      "id": 5,
+      "quantidade": "20"
+    },
+    {
+      "id": 6,
+      "descricao": "borracha",
+      "quantidade": 1
+    },
+    {
+      "descricao": "caixa de lapis de cores",
+      "id": 7,
+      "quantidade": 1
+    },
+    {
+      "descricao": "pasta L",
+      "id": 8,
+      "quantidade": "10"
+    },
+    {
+      "descricao": "Caderno de linha",
+      "quantidade": "15",
+      "id": 319
+    }
+  ],
+  "cotacoes": [
+    {
+      "descricao": "khunoiuhnoinpoi",
+      "id": 575,
+      "valorUnitario": 0,
+      "produtos": []
+    },
+    {
+      "descricao": "teste de cotacao ",
+      "id": 487,
+      "valorUnitario": 0,
+      "produtos": [
+        {
+          "descricao": "Caderno de linhas",
+          "id": 1,
+          "quantidade": "51",
+          "preco": 3.2
+        },
+        {
+          "id": 2,
+          "descricao": "Caderno de desenho",
+          "quantidade": 1,
+          "preco": 50
+        },
+        {
+          "descricao": "lapis numero doissss",
+          "id": 5,
+          "quantidade": "20",
+          "preco": 360
+        }
+      ]
+    }
+  ]
+}
